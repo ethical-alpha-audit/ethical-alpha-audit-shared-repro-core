@@ -1,0 +1,7 @@
+{
+  "repo_name": "ethical-alpha-audit-shared-repro-core",
+  "manuscript_status": "starter-pack placeholder",
+  "environment_status": "replace placeholder lock data with real frozen environment",
+  "output_policy": "All manuscript figures, tables, and derived artefacts should be generated into outputs/",
+  "release_policy": "Tag release, archive in Zenodo, then backfill DOI into manuscript and README"
+}

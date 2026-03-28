@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+title: "Ethical Alpha Audit Shared Reproducibility Core"
+message: "If you use this repository, please cite it using the metadata from this file and the Zenodo DOI for the specific release."
+type: software
+authors:
+  - family-names: Brown
+    given-names: Walter
+repository-code: "https://github.com/REPLACE_WITH_ORG/ethical-alpha-audit-shared-repro-core"
+abstract: "Shared utilities, schemas, helpers, loaders, validation routines, and common plotting functions used across the paper repos."
+keywords:
+  - ethical alpha audit
+  - shared core
+  - reproducibility
+  - jupyter
+  - github
+  - zenodo
+license: MIT
+version: "v1.0.0-initial"
+date-released: "REPLACE_WITH_RELEASE_DATE"

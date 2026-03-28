@@ -1,0 +1,12 @@
+jupyter
+notebook
+jupyterlab
+pandas
+numpy
+matplotlib
+scipy
+pyyaml
+nbformat>=5.10.0
+nbclient>=0.10.0
+jupyter_client>=8.6.0
+ipykernel>=6.29.0

@@ -1,0 +1,21 @@
+{
+  "title": "Ethical Alpha Audit Shared Reproducibility Core",
+  "creators": [
+    {
+      "name": "Brown, Walter",
+      "affiliation": "Ethical Alpha Audit"
+    }
+  ],
+  "description": "Shared utilities, schemas, helpers, loaders, validation routines, and common plotting functions used across the paper repos.",
+  "upload_type": "software",
+  "license": "MIT",
+  "keywords": [
+    "ethical alpha audit",
+    "shared core",
+    "reproducibility",
+    "jupyter",
+    "github",
+    "zenodo"
+  ],
+  "access_right": "open"
+}

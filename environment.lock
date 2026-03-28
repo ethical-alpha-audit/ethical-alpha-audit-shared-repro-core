@@ -1,0 +1,10 @@
+# Placeholder lock file
+# Replace with a real locked environment generated from your chosen toolchain.
+python==3.11
+jupyterlab==4.*
+notebook==7.*
+pandas==2.*
+numpy==1.*
+matplotlib==3.*
+scipy==1.*
+PyYAML==6.*
