@@ -1,0 +1,105 @@
+{
+  "manifest_type": "canonical_baseline_lock",
+  "version": "CBS_v1",
+  "case_count": 12,
+  "profile_count": 4,
+  "total_configurations": 48,
+  "dataset_input_hash_sha256": "022e65c92fb5cf9b3e655e667ca4f3e518375c0386a99c0b92252257b081fbd8",
+  "engine_source_hash_sha256": "072ab10bb3689d80611d77de94af40ce85fd31bc324bdb80c1681c956e0b271e",
+  "output_hash_sha256": "49b34fc08ca3a68a351c55dfb100ebe92de2951b24708b8019d4cf03c9bfbd25",
+  "cross_validation_status": "PASS (gate+compensatory layer; 3 permissive final-verdict diffs from SCM abstention excluded)",
+  "canonical_parameters": {
+    "gate_features": [
+      "intrinsic_safety",
+      "evidence_strength",
+      "bias_harm_index",
+      "uncertainty_calibration",
+      "traceability_integrity"
+    ],
+    "gate_feature_count": 5,
+    "compensatory_weights": {
+      "safety": 0.3,
+      "evidence": 0.2,
+      "bias": 0.2,
+      "calibration": 0.15,
+      "traceability": 0.15
+    },
+    "compensatory_weight_sum": 1.0,
+    "bias_logic": {
+      "gate_direction": "bias_harm_index <= threshold (lower is safer)",
+      "compensatory_inversion": "weight * (1 - bias_harm_index)",
+      "inversion_applied": true
+    },
+    "compensatory_threshold_formula": "mean(safety_gate, evidence_gate, bias_gate) from profile",
+    "compensatory_thresholds_computed": {
+      "permissive": 0.433333,
+      "moderate": 0.5,
+      "strict": 0.566667,
+      "very_strict": 0.6
+    },
+    "threshold_profiles": {
+      "permissive": {
+        "safety_gate": 0.3,
+        "evidence_gate": 0.3,
+        "bias_gate": 0.7,
+        "calibration_gate": 0.3,
+        "traceability_gate": 0.3
+      },
+      "moderate": {
+        "safety_gate": 0.5,
+        "evidence_gate": 0.5,
+        "bias_gate": 0.5,
+        "calibration_gate": 0.4,
+        "traceability_gate": 0.4
+      },
+      "strict": {
+        "safety_gate": 0.7,
+        "evidence_gate": 0.7,
+        "bias_gate": 0.3,
+        "calibration_gate": 0.6,
+        "traceability_gate": 0.6
+      },
+      "very_strict": {
+        "safety_gate": 0.8,
+        "evidence_gate": 0.8,
+        "bias_gate": 0.2,
+        "calibration_gate": 0.7,
+        "traceability_gate": 0.7
+      }
+    }
+  },
+  "key_results_moderate": {
+    "nc_sensitivity": "11/12 (91.7%)",
+    "nc_approved_cases": [
+      "google_dr"
+    ],
+    "nc_rejected_count": 11,
+    "comp_approved_cases": [
+      "google_dr",
+      "google_flu",
+      "uber_av"
+    ],
+    "comp_divergence_cases": [
+      "google_flu",
+      "uber_av"
+    ],
+    "comp_divergence_count": 2,
+    "gate_failure_frequencies": {
+      "safety": "10/12 (83%)",
+      "evidence": "3/12 (25%)",
+      "bias": "6/12 (50%)",
+      "calibration": "5/12 (42%)",
+      "traceability": "5/12 (42%)"
+    }
+  },
+  "abstention_note": {
+    "affected_configs": [
+      "epic_sepsis/permissive",
+      "google_flu/permissive",
+      "babylon/permissive"
+    ],
+    "cause": "SCM-derived abstention_rate > 0.5 overrides all_gates_pass in canonical engine",
+    "impact_on_moderate": "NONE",
+    "scope_decision": "Abstention excluded from public replay engine (SCM-specific)"
+  }
+}

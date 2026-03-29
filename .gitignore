@@ -4,3 +4,14 @@ __pycache__/
 .DS_Store
 *.pyc
 outputs/release_bundle/*.zip
+paper_submission_bundle/
+reviewer_private/
+*.docx
+*.doc
+*.pdf
+*.png
+*.jpg
+*.jpeg
+*.tif
+*.tiff
+

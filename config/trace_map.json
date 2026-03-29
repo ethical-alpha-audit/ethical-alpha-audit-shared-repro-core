@@ -1,0 +1,6 @@
+{
+  "outputs/tables/smoke_test_results.csv": {
+    "notebook": "notebooks/archival_shared/01_smoke_test.ipynb",
+    "role": "shared-core validation output"
+  }
+}

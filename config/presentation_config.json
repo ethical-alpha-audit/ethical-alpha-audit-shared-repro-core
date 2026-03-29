@@ -1,0 +1,7 @@
+{
+  "shared_demo_outputs": {
+    "title_style": "minimal",
+    "annotation_style": "minimal",
+    "label_mode": "public-safe"
+  }
+}

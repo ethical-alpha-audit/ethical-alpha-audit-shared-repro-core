@@ -1,0 +1,103 @@
+{
+  "manifest_type": "corrected_engine_manifest",
+  "version": "1.1",
+  "engine_file": "corrected_public_engine_v1_1.py",
+  "engine_source_hash_sha256": "875f73150fae43695ecc6659581e8e25b365ad6171c9e13629fb01e923ab311c",
+  "canonical_baseline_version": "CBS_v1",
+  "canonical_engine_source": "historical-replay-governance-simulation/src/policy/governance_engine.py",
+  "supported_modes": {
+    "replay_mode": {
+      "description": "5-gate + compensatory only. approved = all_gates_pass. For static historical replay (Paper 4).",
+      "abstention_applied": false,
+      "fallback_applied": false
+    },
+    "canonical_full_mode": {
+      "description": "5-gate + compensatory + SCM abstention override + fallback check. Full canonical verdict.",
+      "abstention_applied": true,
+      "abstention_formula": "1 / (1 + exp(-5.0 * (0.5 - uncertainty_calibration)))",
+      "abstention_trigger": "> 0.5 (strict)",
+      "fallback_check": "fallback_safety_delta >= 0.3",
+      "fallback_default_if_missing": 1.0
+    }
+  },
+  "preserved_canonical_logic": {
+    "gate_evaluation": "Raw single-feature threshold comparison (5 gates)",
+    "gate_features": [
+      "intrinsic_safety",
+      "evidence_strength",
+      "bias_harm_index",
+      "uncertainty_calibration",
+      "traceability_integrity"
+    ],
+    "gate_directions": {
+      "gate_safety": ">=",
+      "gate_evidence": ">=",
+      "gate_bias": "<=",
+      "gate_calibration": ">=",
+      "gate_traceability": ">="
+    },
+    "compensatory_formula": "0.3*S + 0.2*E + 0.2*(1-B) + 0.15*C + 0.15*T",
+    "compensatory_weights": {
+      "safety": 0.3,
+      "evidence": 0.2,
+      "bias": 0.2,
+      "calibration": 0.15,
+      "traceability": 0.15
+    },
+    "compensatory_weight_sum": 1.0,
+    "compensatory_bias_inversion": true,
+    "compensatory_threshold_formula": "mean(safety_gate, evidence_gate, bias_gate)",
+    "threshold_profiles": {
+      "permissive": {
+        "safety_gate": 0.3,
+        "evidence_gate": 0.3,
+        "bias_gate": 0.7,
+        "calibration_gate": 0.3,
+        "traceability_gate": 0.3
+      },
+      "moderate": {
+        "safety_gate": 0.5,
+        "evidence_gate": 0.5,
+        "bias_gate": 0.5,
+        "calibration_gate": 0.4,
+        "traceability_gate": 0.4
+      },
+      "strict": {
+        "safety_gate": 0.7,
+        "evidence_gate": 0.7,
+        "bias_gate": 0.3,
+        "calibration_gate": 0.6,
+        "traceability_gate": 0.6
+      },
+      "very_strict": {
+        "safety_gate": 0.8,
+        "evidence_gate": 0.8,
+        "bias_gate": 0.2,
+        "calibration_gate": 0.7,
+        "traceability_gate": 0.7
+      }
+    }
+  },
+  "parity_results": {
+    "replay_mode": {
+      "gate_parity": "48/48",
+      "compensatory_parity": "48/48",
+      "verdict_parity": "48/48",
+      "output_hash": "5c40edc80e2dafc2a09e4925472946617561a9056af08340c50c9ea5874f2f5d",
+      "baseline_hash": "49b34fc08ca3a68a351c55dfb100ebe92de2951b24708b8019d4cf03c9bfbd25"
+    },
+    "canonical_full_mode": {
+      "gate_parity": "48/48",
+      "compensatory_parity": "48/48",
+      "verdict_parity": "48/48",
+      "output_hash": "63d52a20c8cc08d5a6fb6bc7ce26ba4fab4e0f626b7a33302be288e1685c61a1"
+    }
+  },
+  "v1_0_to_v1_1_changes": [
+    "Added canonical_full_mode with SCM abstention + fallback override",
+    "SCM abstention formula embedded and verified (12/12 against canonical stored results)",
+    "Fallback adequacy check: fallback_safety_delta >= 0.3",
+    "Mode parameter added to evaluate_case / evaluate_batch / CLI",
+    "replay_mode behaviour unchanged from v1.0"
+  ]
+}

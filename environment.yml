@@ -1,4 +1,4 @@
-name: eaa-paper-env
+name: eaa-shared-core-env
 channels:
   - conda-forge
 dependencies:
