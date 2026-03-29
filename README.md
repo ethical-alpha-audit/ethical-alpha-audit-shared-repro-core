@@ -1,5 +1,5 @@
 # Ethical Alpha Audit Shared Repro Core
-
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19322346.svg)](https://doi.org/10.5281/zenodo.19322346)
 ## Quick start
 
 From the repository root:
@@ -24,6 +24,47 @@ The harness executes every notebook in `config/notebook_plan.json`, regenerates 
 
 Traceability from file to notebook: `config/trace_map.json`.
 
+## Reproducibility Notebooks
+
+The following Jupyter notebooks provide a deterministic, end-to-end execution pathway for reproducing all core results reported in this repository.
+
+All notebooks are rendered via NBViewer for stable, dependency-free viewing.
+
+### Execution order
+
+1. **Smoke Test**  
+   Verifies environment integrity, deterministic settings, and numerical stability.
+
+   https://nbviewer.org/github/ethical-alpha-audit/ethical-alpha-audit-shared-repro-core/blob/main/notebooks/archival_shared/01_smoke_test.ipynb
+
+2. **Utilities Validation**  
+   Validates core utility functions, statistical components, and supporting infrastructure used throughout the pipeline.
+
+   https://nbviewer.org/github/ethical-alpha-audit/ethical-alpha-audit-shared-repro-core/blob/main/notebooks/archival_shared/02_utilities_validation.ipynb
+
+3. **Demonstration Pipeline**  
+   Executes the full governance evaluation pipeline on the reference dataset, reproducing the primary outputs reported in the manuscript.
+
+   https://nbviewer.org/github/ethical-alpha-audit/ethical-alpha-audit-shared-repro-core/blob/main/notebooks/archival_shared/03_demo_pipeline.ipynb
+
+### Reproducibilit## Interactive Execution (Binder)
+
+In addition to static NBViewer rendering, the notebooks can be executed interactively via Binder:
+
+[Launch Interactive Environment](https://mybinder.org/v2/gh/ethical-alpha-audit/ethical-alpha-audit-shared-repro-core/main)
+
+This launches a live Jupyter environment in the browser with all dependencies preconfigured.
+
+### Notes
+- First launch may take 1–2 minutes (environment build)
+- Sessions are temporary and reset after inactivity
+- For full deterministic reproduction, use the Docker setup provided in this repositoryy guarantees
+
+- Deterministic execution (fixed seeds, controlled environment)
+- Version-controlled code and data
+- DOI-linked release for archival integrity (see Zenodo record)
+
+Users are encouraged to execute notebooks locally or via Docker for full reproducibility verification.
 ## Deterministic guarantee
 
 - **Engine:** `engine/corrected_public_engine_v1_1.py` is the single authoritative integration; notebooks import it rather than reimplementing logic.
