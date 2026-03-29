@@ -1,5 +1,5 @@
 # Ethical Alpha Audit Shared Repro Core
-
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19322346.svg)](https://doi.org/10.5281/zenodo.19322346)
 ## Quick start
 
 From the repository root:
