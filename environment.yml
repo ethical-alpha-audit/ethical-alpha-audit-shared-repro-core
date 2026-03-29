@@ -10,4 +10,5 @@ dependencies:
   - matplotlib
   - scipy
   - pyyaml
+  - ipywidgets>=8.0.0
   - pip
