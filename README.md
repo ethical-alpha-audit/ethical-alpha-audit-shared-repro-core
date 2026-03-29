@@ -1,142 +1,68 @@
-# Shared Reproducibility Core Repository  
-**Reusable utilities, validation routines, schemas, loaders, and plotting tools shared across downstream analysis repos.**
+# Ethical Alpha Audit Shared Repro Core
 
-This root README unifies two previously separate roles:
+## Purpose
 
-1. **Shared Core Library** (primary, reusable cross‑repo functionality)  
-2. **Deterministic Paper Harness** (repository‑specific smoke tests & validation demos)
+This repository is the shared reproducibility core for the Ethical Alpha Audit public reproducibility stack.
 
-Both roles remain distinct, but now appear in a structured, integrated way.
+It is a shared authority/support repository, not a paper-specific submission repository.
 
----
+Its role is to provide:
 
-# 1. Purpose
+- the shared deterministic harness
+- the shared public engine integration
+- shared config contracts and validation structure
+- shared smoke, utilities, and demo pipeline notebooks for core validation
 
-## 1.1 Shared Core Purpose
-This repository provides:
+## What this repository contains
 
-- Common loaders and helpers  
-- Reproducibility utilities  
-- Validation routines  
-- Shared schemas  
-- Plotting helpers used in multiple paper repositories  
+- `engine/` for the authoritative public engine integration
+- `manifests/` for engine-related manifest files
+- `config/` for notebook execution order, expected outputs, trace mapping, presentation config, and harness settings
+- `notebooks/archival_shared/` for active shared-core notebooks
+- `notebooks/reference/` for retained reference notebooks that are not part of the active execution chain
+- `scripts/` and `tests/` for harness and validation support
+- `reproduce_all.py` as the shared-core execution entry point
 
-It is the shared backbone to ensure **deterministic, traceable, reproducible results** across research outputs.
+## What this repository does not contain
 
-## 1.2 Deterministic Harness Purpose
-A lightweight, deterministic execution harness is included to:
+This repository should not be used as the active home for:
 
-- Smoke‑test the shared core  
-- Validate utilities work in a clean environment  
-- Produce stable example outputs  
-- Provide a minimal demonstration pipeline  
+- paper-specific submission bundles
+- paper-specific reviewer Word document chains
+- paper-specific release-bound archival outputs
+- private manuscript materials intended to remain unpublished before journal acceptance
 
-This harness is intentionally simple and is expected to evolve as the repo matures.
+Those belong in paper-specific repositories.
 
----
+## Active notebook execution chain
 
-# 2. Release Target
+The active shared-core notebook plan is:
 
-Planned release tag: **`v1.0.0-initial`**
+1. `notebooks/archival_shared/01_smoke_test.ipynb`
+2. `notebooks/archival_shared/02_utilities_validation.ipynb`
+3. `notebooks/archival_shared/03_demo_pipeline.ipynb`
 
-The release will include:
+These notebooks are used for shared-core validation and smoke testing, not as paper-specific archival notebooks.
 
-- Public GitHub repository  
-- Zenodo‑linked archival snapshot  
-- Reproducibility manifest & hash bundle  
-- Notebook set  
-- Manuscript + supplement  
-- Version‑locked environment files  
+## Execution and validation rules
 
----
+- Outputs must be written only to `outputs/`
+- Validation must be run through `python reproduce_all.py`
+- Fresh-output integrity rules apply: stale files must not be used as proof of reproducibility
+- `environment.lock` remains authoritative where present
+- Shared-core validation outputs are governed by `config/expected_outputs.json`
+- Output traceability is governed by `config/trace_map.json`
 
-# 3. Required Public-Facing Components
+## Release discipline
 
-- GitHub repository with version tags  
-- Zenodo archived release  
-- Ordered Jupyter notebook set  
-- Versioned manuscript and supplementary materials  
-- Reproducibility manifest with output hashes  
+Do not treat this repository as release-ready unless:
 
----
+- the engine integration is present and correct
+- the notebook plan is valid JSON and matches the active notebook inventory
+- expected outputs are defined for the active notebooks
+- outputs are generated through a clean run
+- manifests and validation artefacts are current
 
-# 4. Suggested First-Release Checklist
+## Notes on manuscript-related folders
 
-1. Finalise manuscript title, author list, and metadata  
-2. Replace placeholder DOI/repo links in manuscript with final release values  
-3. Populate `data/README.md` with schema, provenance, and access notes  
-4. Freeze environments:  
-   - `environment.yml`  
-   - `requirements.txt`  
-   - `environment.lock`  
-5. Run `python reproduce_all.py` end‑to‑end  
-6. Regenerate:  
-   - `repro_manifest.json`  
-   - `MANIFEST.sha256`  
-7. Create GitHub release: `v1.0.0-initial`  
-8. Confirm Zenodo successfully captured the GitHub release  
-9. Insert Zenodo DOI into manuscript and release notes  
-
----
-
-# 5. Repository Structure & Folder Expectations
-
-| Folder | Purpose |
-|--------|---------|
-| `manuscript/` | Manuscript, supplement, reviewer response |
-| `notebooks/` | Ordered reproducible notebooks (top‑to‑bottom execution) |
-| `src/` | Reusable shared-core code |
-| `data/` | Raw, processed, and documentation subfolders |
-| `outputs/` | Generated figures, tables, logs, artefacts |
-| `tests/` | Deterministic tests and reproducibility checks |
-| `docs/` | Methods, provenance notes, architectural documentation |
-| `config/` | Configuration contracts (trace map, presentation config) |
-
----
-
-# 6. Notebook Inventory (Shared Core)
-
-- **`01_core_demo.ipynb`** — Demonstration of shared utilities  
-- **`02_validation_demo.ipynb`** — Core validation routine showcase  
-
----
-
-# 7. Deterministic Harness (Paper-Specific)
-
-The deterministic harness bundled with this repo is configured for:
-
-**Repository:** `eaa-shared-repro-core`  
-**Role:** Smoke testing, deterministic validation, demonstration pipeline
-
-## Included notebook order
-1. **01_smoke_test.ipynb**  
-   - Outputs:  
-     - `outputs/tables/smoke_test_results.csv`  
-     - `outputs/figures/smoke_test_summary.txt`  
-2. **02_utilities_validation.ipynb**  
-   - Output: `outputs/tables/utilities_validation.csv`  
-3. **03_demo_pipeline.ipynb**  
-   - Output: `outputs/figures/demo_pipeline_summary.txt`  
-
-## Usage
-```bash
-python reproduce_all.py
-```
-
-Update the notebook plan and output list as soon as real notebooks and artefacts are added.
-
----
-
-# 8. Immediate Next Actions
-
-- Fill in manuscript metadata  
-- Replace stub notebooks with real content  
-- Ensure Zenodo integration is enabled  
-- Generate a clean first tagged release  
-
----
-
-# 9. Contact & Maintenance
-
-This repository is maintained as part of the shared reproducibility infrastructure.  
-Please coordinate changes affecting the shared core with other repos depending on it.
+If manuscript-related placeholder folders or notes are retained in this repository, they must be clearly treated as non-release support material and must not be confused with paper-specific publication artefacts.

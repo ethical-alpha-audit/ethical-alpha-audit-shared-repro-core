@@ -1,29 +1,7 @@
-x {
+{
   "execution_order": [
-    {
-      "name": "01_smoke_test.ipynb",
-      "path": "notebooks/archival_shared/01_smoke_test.ipynb",
-      "required": true,
-      "expected_outputs": [
-        "outputs/tables/smoke_test_results.csv",
-        "outputs/figures/smoke_test_summary.txt"
-      ]
-    },
-    {
-      "name": "02_utilities_validation.ipynb",
-      "path": "notebooks/archival_shared/02_utilities_validation.ipynb",
-      "required": true,
-      "expected_outputs": [
-        "outputs/tables/utilities_validation.csv"
-      ]
-    },
-    {
-      "name": "03_demo_pipeline.ipynb",
-      "path": "notebooks/archival_shared/03_demo_pipeline.ipynb",
-      "required": true,
-      "expected_outputs": [
-        "outputs/figures/demo_pipeline_summary.txt"
-      ]
-    }
+    "notebooks/archival_shared/01_smoke_test.ipynb",
+    "notebooks/archival_shared/02_utilities_validation.ipynb",
+    "notebooks/archival_shared/03_demo_pipeline.ipynb"
   ]
 }
