@@ -1,0 +1,21 @@
+Shared-core smoke test (01_smoke_test)
+========================================
+
+Purpose: This notebook runs one fixed synthetic governance case through the
+corrected public engine v1.1 in replay_mode (five gates plus compensatory
+scoring only, matching the static historical replay path).
+
+Why this matters: A successful run proves the checked-out engine module
+executes end-to-end and that we can serialize a deterministic record under
+config/expected_outputs.json for automated manifest validation.
+
+Outputs produced (this notebook only):
+- outputs/tables/smoke_test_results.csv — tabular record for the case.
+- outputs/figures/smoke_test_summary.txt — this narrative summary.
+
+Governance outcome:                  APPROVE
+All gates pass (replay):             1
+Compensatory approved:               1
+Final approved flag (replay):       1
+SHA-256 (canonical JSON result):    4c797545771b95ddfefb32e810a58d0431de8d6eb6317b096f0f0a7fc2c84584
+

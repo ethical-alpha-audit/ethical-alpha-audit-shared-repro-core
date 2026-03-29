@@ -1,68 +1,70 @@
 # Ethical Alpha Audit Shared Repro Core
 
+## Quick start
+
+From the repository root:
+
+```bash
+python -m pip install -r requirements.txt
+python reproduce_all.py
+```
+
+The harness executes every notebook in `config/notebook_plan.json`, regenerates `logs/actual_manifest.json`, and validates each declared output byte-for-byte against the SHA-256 pins in `config/expected_outputs.json`.
+
+**This repository reproduces all results without modification:** the locked outputs under `outputs/` match the pinned digests, and validation fails if any file is missing or altered.
+
+## Expected outputs
+
+| Path | Role |
+|------|------|
+| `outputs/tables/smoke_test_results.csv` | Single-case replay-mode engine smoke record |
+| `outputs/figures/smoke_test_summary.txt` | Narrative summary for the smoke test |
+| `outputs/tables/utilities_validation.csv` | Direct engine helper checks (gates, abstention helper, hash fixture) |
+| `outputs/figures/demo_pipeline_summary.txt` | Batch summary for canonical full mode |
+
+Traceability from file to notebook: `config/trace_map.json`.
+
+## Deterministic guarantee
+
+- **Engine:** `engine/corrected_public_engine_v1_1.py` is the single authoritative integration; notebooks import it rather than reimplementing logic.
+- **Execution order:** `config/notebook_plan.json` is fixed; `reproduce_all.py` is the only supported entry point for full validation.
+- **Python hashing:** `config/harness_settings.json` sets `python_hash_seed` (consumed by `reproduce_all.py` and the notebook runner).
+- **Integrity:** Expected outputs use **pinned SHA-256** values. `scripts/validate_outputs.py` rejects missing files, wrong digests, or tampering—validation is cryptographic, not presence-only.
+
+For a concise narrative of the workflow, see `docs/reproducibility_statement.md`.
+
+## Repository structure
+
+| Area | Purpose |
+|------|---------|
+| `engine/` | Authoritative public governance engine (v1.1) |
+| `manifests/` | Engine-related manifest JSON (supporting artefacts) |
+| `config/` | Notebook plan, expected outputs (hash pins), trace map, harness settings |
+| `notebooks/archival_shared/` | Active validation notebooks executed by the harness |
+| `notebooks/reference/` | Reference notebooks **not** in the active execution chain |
+| `scripts/` | Notebook runner, manifest builder, output validator |
+| `tests/` | Lightweight structure / harness tests |
+| `outputs/` | Declared validation artefacts only (plus `.gitkeep` placeholders) |
+| `logs/` | Runtime manifests (`actual_manifest.json` after a full run) |
+| `reproduce_all.py` | One-command reproduction and validation |
+
 ## Purpose
 
-This repository is the shared reproducibility core for the Ethical Alpha Audit public reproducibility stack.
-
-It is a shared authority/support repository, not a paper-specific submission repository.
-
-Its role is to provide:
-
-- the shared deterministic harness
-- the shared public engine integration
-- shared config contracts and validation structure
-- shared smoke, utilities, and demo pipeline notebooks for core validation
-
-## What this repository contains
-
-- `engine/` for the authoritative public engine integration
-- `manifests/` for engine-related manifest files
-- `config/` for notebook execution order, expected outputs, trace mapping, presentation config, and harness settings
-- `notebooks/archival_shared/` for active shared-core notebooks
-- `notebooks/reference/` for retained reference notebooks that are not part of the active execution chain
-- `scripts/` and `tests/` for harness and validation support
-- `reproduce_all.py` as the shared-core execution entry point
+This repository is the **shared reproducibility core** for the Ethical Alpha Audit public stack: deterministic harness, public engine wiring, config contracts, and archival notebooks. It is **not** a paper-specific submission repository.
 
 ## What this repository does not contain
 
-This repository should not be used as the active home for:
-
-- paper-specific submission bundles
-- paper-specific reviewer Word document chains
-- paper-specific release-bound archival outputs
-- private manuscript materials intended to remain unpublished before journal acceptance
-
-Those belong in paper-specific repositories.
-
-## Active notebook execution chain
-
-The active shared-core notebook plan is:
-
-1. `notebooks/archival_shared/01_smoke_test.ipynb`
-2. `notebooks/archival_shared/02_utilities_validation.ipynb`
-3. `notebooks/archival_shared/03_demo_pipeline.ipynb`
-
-These notebooks are used for shared-core validation and smoke testing, not as paper-specific archival notebooks.
-
-## Execution and validation rules
-
-- Outputs must be written only to `outputs/`
-- Validation must be run through `python reproduce_all.py`
-- Fresh-output integrity rules apply: stale files must not be used as proof of reproducibility
-- `environment.lock` remains authoritative where present
-- Shared-core validation outputs are governed by `config/expected_outputs.json`
-- Output traceability is governed by `config/trace_map.json`
+- Paper-specific submission bundles, reviewer-only document chains, or private manuscript drops  
+  (those belong in paper-specific repositories.)
 
 ## Release discipline
 
-Do not treat this repository as release-ready unless:
-
-- the engine integration is present and correct
-- the notebook plan is valid JSON and matches the active notebook inventory
-- expected outputs are defined for the active notebooks
-- outputs are generated through a clean run
-- manifests and validation artefacts are current
+Release-ready means: engine present, plan valid, outputs generated and **hash-locked** in `config/expected_outputs.json`, and `python reproduce_all.py` passing against those pins after a clean generation run.
 
 ## Notes on manuscript-related folders
 
-If manuscript-related placeholder folders or notes are retained in this repository, they must be clearly treated as non-release support material and must not be confused with paper-specific publication artefacts.
+Any manuscript-related placeholders must be clearly non-release material and not confused with publication artefacts.
+
+## Archiving
+
+For Zenodo-oriented metadata prepared alongside the repository, see `zenodo.json`. Deposit-specific DOIs are assigned **only** when a version is published on Zenodo (not embedded here).

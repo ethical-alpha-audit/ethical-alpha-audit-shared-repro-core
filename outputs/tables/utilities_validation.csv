@@ -1,0 +1,7 @@
+check_name,value
+evaluate_gates_all_pass,1
+binding_constraints_count,0
+compensatory_score,0.5785
+abstention_rate_at_uc_0.5,0.5
+abstention_rate_case_uc,0.437823
+hash_batch_fixture_sha256,ada931c9c1c27152d67ab861e9bb206c6fe4b26bb1d14367ba632f9bf8bd1ac7

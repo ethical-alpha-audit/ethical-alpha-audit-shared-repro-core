@@ -1,0 +1,25 @@
+{
+  "generated_at": "2026-03-29T18:03:51.821301+00:00",
+  "files": [
+    {
+      "path": "outputs/tables/smoke_test_results.csv",
+      "sha256": "d967a43d2b635ca923a7c2d0c60c523c1bf0c655b18bed442e6f686d7d190ce0",
+      "exists": true
+    },
+    {
+      "path": "outputs/figures/smoke_test_summary.txt",
+      "sha256": "dbf23caa21c0f35a00ae80ce4db2147bc4cdf95c8df7965f6af6d720de0294c6",
+      "exists": true
+    },
+    {
+      "path": "outputs/tables/utilities_validation.csv",
+      "sha256": "7e0ed8a73eaad12fb02c21b25e9493512be237312dbec159ed67f01080e3124f",
+      "exists": true
+    },
+    {
+      "path": "outputs/figures/demo_pipeline_summary.txt",
+      "sha256": "8951ee203a83dfab8368afaf1b5b295372ee24491ee95c4e3af046cfc022cc48",
+      "exists": true
+    }
+  ]
+}

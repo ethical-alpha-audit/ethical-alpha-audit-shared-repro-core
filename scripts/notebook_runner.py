@@ -51,9 +51,10 @@ def execute_all():
     timeout = int(settings["execution_timeout_seconds"])
     clear_outputs = bool(settings["clear_outputs_before_run"])
     for item in plan["execution_order"]:
-        path = BASE_DIR / item["path"]
+        rel_path = item if isinstance(item, str) else item["path"]
+        path = BASE_DIR / rel_path
         result = run_notebook(path, timeout=timeout, clear_outputs=clear_outputs)
-        result["notebook"] = item["path"]
+        result["notebook"] = rel_path
         results.append(result)
         if settings["fail_fast"] and result["status"] != "ok":
             break

@@ -1,0 +1,26 @@
+Shared-core demo pipeline (03_demo_pipeline)
+============================================
+
+Purpose: This notebook runs a small, fixed batch of cases in canonical_full_mode,
+so both non-compensatory gates and SCM-derived abstention / fallback logic are
+exercised alongside the compensatory layer.
+
+How it works: Each case is a dict consumed by the engine's evaluate_batch helper.
+The moderate threshold profile from the engine's canonical table is used.
+
+Why this matters: The batch shows contrasting outcomes (approval with defaults,
+hard gate failure, and abstention with inadequate fallback) using the same public
+entry points the shared core documents.
+
+Output (this notebook only):
+- outputs/figures/demo_pipeline_summary.txt
+
+Cases in batch:           3
+Approved (moderate):      1
+Rejected (moderate):      2
+Batch digest (SHA-256):   607ebd847a3565b8d53fde1cb363d004b43e1d63f9b665e8cf7b7a0799d75edb
+
+Per-case governance outcomes (moderate profile):
+- demo_replay_pass: APPROVE (approved=1) abstention_rate=0.401312 abstention_triggered=0 fallback_adequate=1
+- demo_gate_fail: REJECT (approved=0) abstention_rate=0.401312 abstention_triggered=0 fallback_adequate=1
+- demo_fullmode_abstention: REJECT (approved=0) abstention_rate=0.598688 abstention_triggered=1 fallback_adequate=0

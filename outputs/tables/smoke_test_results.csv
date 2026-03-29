@@ -1,0 +1,2 @@
+case_id,profile_name,mode,governance_outcome,all_gates_pass,compensatory_score,compensatory_approved,approved,result_sha256
+smoke_core_001,moderate,replay_mode,APPROVE,1,0.5535,1,1,4c797545771b95ddfefb32e810a58d0431de8d6eb6317b096f0f0a7fc2c84584
