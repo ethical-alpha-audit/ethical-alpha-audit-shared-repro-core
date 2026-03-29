@@ -24,6 +24,36 @@ The harness executes every notebook in `config/notebook_plan.json`, regenerates 
 
 Traceability from file to notebook: `config/trace_map.json`.
 
+## Reproducibility Notebooks
+
+The following Jupyter notebooks provide a deterministic, end-to-end execution pathway for reproducing all core results reported in this repository.
+
+All notebooks are rendered via NBViewer for stable, dependency-free viewing.
+
+### Execution order
+
+1. **Smoke Test**  
+   Verifies environment integrity, deterministic settings, and numerical stability.
+
+   https://nbviewer.org/github/ethical-alpha-audit/ethical-alpha-audit-shared-repro-core/blob/main/notebooks/archival_shared/01_smoke_test.ipynb
+
+2. **Utilities Validation**  
+   Validates core utility functions, statistical components, and supporting infrastructure used throughout the pipeline.
+
+   https://nbviewer.org/github/ethical-alpha-audit/ethical-alpha-audit-shared-repro-core/blob/main/notebooks/archival_shared/02_utilities_validation.ipynb
+
+3. **Demonstration Pipeline**  
+   Executes the full governance evaluation pipeline on the reference dataset, reproducing the primary outputs reported in the manuscript.
+
+   https://nbviewer.org/github/ethical-alpha-audit/ethical-alpha-audit-shared-repro-core/blob/main/notebooks/archival_shared/03_demo_pipeline.ipynb
+
+### Reproducibility guarantees
+
+- Deterministic execution (fixed seeds, controlled environment)
+- Version-controlled code and data
+- DOI-linked release for archival integrity (see Zenodo record)
+
+Users are encouraged to execute notebooks locally or via Docker for full reproducibility verification.
 ## Deterministic guarantee
 
 - **Engine:** `engine/corrected_public_engine_v1_1.py` is the single authoritative integration; notebooks import it rather than reimplementing logic.
