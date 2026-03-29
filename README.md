@@ -47,7 +47,18 @@ All notebooks are rendered via NBViewer for stable, dependency-free viewing.
 
    https://nbviewer.org/github/ethical-alpha-audit/ethical-alpha-audit-shared-repro-core/blob/main/notebooks/archival_shared/03_demo_pipeline.ipynb
 
-### Reproducibility guarantees
+### Reproducibilit## Interactive Execution (Binder)
+
+In addition to static NBViewer rendering, the notebooks can be executed interactively via Binder:
+
+[Launch Interactive Environment](https://mybinder.org/v2/gh/ethical-alpha-audit/ethical-alpha-audit-shared-repro-core/main)
+
+This launches a live Jupyter environment in the browser with all dependencies preconfigured.
+
+### Notes
+- First launch may take 1–2 minutes (environment build)
+- Sessions are temporary and reset after inactivity
+- For full deterministic reproduction, use the Docker setup provided in this repositoryy guarantees
 
 - Deterministic execution (fixed seeds, controlled environment)
 - Version-controlled code and data
