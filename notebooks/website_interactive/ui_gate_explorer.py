@@ -1,4 +1,4 @@
-﻿from __future__ import annotations
+from __future__ import annotations
 
 import os
 import sys
@@ -105,6 +105,19 @@ def _build_scenarios(eng):
 
 def launch_gate_explorer_ui() -> None:
     """Launch bounded, presentation-only widget interface."""
+    try:
+        _launch_gate_explorer_ui_impl()
+    except Exception as exc:  # pragma: no cover - Binder/kernel UX guardrail
+        display(
+            widgets.HTML(
+                "<p><b>Demonstration could not start.</b> Try "
+                "<em>Kernel → Restart Kernel and Run All Cells</em>.</p>"
+                f"<pre style='white-space:pre-wrap'>{exc!r}</pre>"
+            )
+        )
+
+
+def _launch_gate_explorer_ui_impl() -> None:
     eng = _get_engine_module()
     scenarios = _build_scenarios(eng)
 
