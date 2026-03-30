@@ -1,18 +1,18 @@
 {
   "outputs/tables/smoke_test_results.csv": {
-    "notebook": "notebooks/archival_shared/01_smoke_test.ipynb",
+    "notebook": "notebooks/archival_shared/technical/01_smoke_test_execute.ipynb",
     "role": "shared-core validation output"
   },
   "outputs/figures/smoke_test_summary.txt": {
-    "notebook": "notebooks/archival_shared/01_smoke_test.ipynb",
+    "notebook": "notebooks/archival_shared/technical/01_smoke_test_execute.ipynb",
     "role": "shared-core validation summary"
   },
   "outputs/tables/utilities_validation.csv": {
-    "notebook": "notebooks/archival_shared/02_utilities_validation.ipynb",
+    "notebook": "notebooks/archival_shared/technical/02_utilities_validation_execute.ipynb",
     "role": "shared-core utilities validation output"
   },
   "outputs/figures/demo_pipeline_summary.txt": {
-    "notebook": "notebooks/archival_shared/03_demo_pipeline.ipynb",
+    "notebook": "notebooks/archival_shared/technical/03_demo_pipeline_execute.ipynb",
     "role": "shared-core demo pipeline summary"
   }
 }

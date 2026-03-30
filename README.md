@@ -26,11 +26,9 @@ Traceability from file to notebook: `config/trace_map.json`.
 
 ## Reproducibility Notebooks
 
-The following Jupyter notebooks provide a deterministic, end-to-end execution pathway for reproducing all core results reported in this repository.
+The following links open **narrative** notebooks (no code on NBViewer). Full validation runs the **technical** execute notebooks via the harness.
 
-All notebooks are rendered via NBViewer for stable, dependency-free viewing.
-
-### Execution order
+### Experiment narrative (NBViewer)
 
 1. **Smoke Test**  
    Verifies environment integrity, deterministic settings, and numerical stability.
@@ -47,24 +45,22 @@ All notebooks are rendered via NBViewer for stable, dependency-free viewing.
 
    https://nbviewer.org/github/ethical-alpha-audit/ethical-alpha-audit-shared-repro-core/blob/main/notebooks/archival_shared/03_demo_pipeline.ipynb
 
-### Reproducibilit## Interactive Execution (Binder)
+### Harness vs NBViewer
 
-In addition to static NBViewer rendering, the notebooks can be executed interactively via Binder:
+`python reproduce_all.py` executes `notebooks/archival_shared/technical/*_execute.ipynb` (see `config/notebook_plan.json`). NBViewer links above point at **markdown-only** story notebooks. Paired **`*_interactive.ipynb`** files provide **ipywidgets**; serve with [Voila](https://voila.readthedocs.io/) for a code-free UI (`voila.json`).
 
-[Launch Interactive Environment](https://mybinder.org/v2/gh/ethical-alpha-audit/ethical-alpha-audit-shared-repro-core/main)
+### Interactive execution (Binder)
 
-This launches a live Jupyter environment in the browser with all dependencies preconfigured.
+[Launch interactive environment](https://mybinder.org/v2/gh/ethical-alpha-audit/ethical-alpha-audit-shared-repro-core/main)
 
 ### Notes
-- First launch may take 1–2 minutes (environment build)
-- Sessions are temporary and reset after inactivity
-- For full deterministic reproduction, use the Docker setup provided in this repositoryy guarantees
 
-- Deterministic execution (fixed seeds, controlled environment)
-- Version-controlled code and data
-- DOI-linked release for archival integrity (see Zenodo record)
+- First launch may take 1–2 minutes (environment build).
+- Sessions are temporary and reset after inactivity.
+- For cryptographic validation of outputs, run `python reproduce_all.py` from the repository root.
+- Deterministic execution uses `config/harness_settings.json` and version-controlled sources; see Zenodo for DOI-linked releases.
 
-Users are encouraged to execute notebooks locally or via Docker for full reproducibility verification.
+Users may also run notebooks locally or via Docker.
 ## Deterministic guarantee
 
 - **Engine:** `engine/corrected_public_engine_v1_1.py` is the single authoritative integration; notebooks import it rather than reimplementing logic.
@@ -81,7 +77,7 @@ For a concise narrative of the workflow, see `docs/reproducibility_statement.md`
 | `engine/` | Authoritative public governance engine (v1.1) |
 | `manifests/` | Engine-related manifest JSON (supporting artefacts) |
 | `config/` | Notebook plan, expected outputs (hash pins), trace map, harness settings |
-| `notebooks/archival_shared/` | Active validation notebooks executed by the harness |
+| `notebooks/archival_shared/` | Archival story + interactive pairs; **`technical/`** notebooks are executed by the harness |
 | `notebooks/reference/` | Reference notebooks **not** in the active execution chain |
 | `scripts/` | Notebook runner, manifest builder, output validator |
 | `tests/` | Lightweight structure / harness tests |

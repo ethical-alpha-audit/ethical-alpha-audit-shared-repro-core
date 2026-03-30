@@ -140,6 +140,13 @@ def _launch_gate_explorer_ui_impl() -> None:
     show_chart_toggle = widgets.Checkbox(value=True, description="Show chart")
     show_summary_toggle = widgets.Checkbox(value=True, description="Show verdict & interpretation")
 
+    story = widgets.HTML(
+        "<p><b>Auditable decision framework</b> (bounded demonstrator; display-only, no writes under "
+        "<code>outputs/</code>). <b>Non-compensatory</b> conjunctive gates, <b>explicit activation thresholds</b>, "
+        "and <b>structured override / abstention–fallback</b> paths in full mode—explore via fixed scenarios "
+        "and profiles below.</p>"
+    )
+
     controls_box = widgets.VBox([
         scenario_dd,
         profile_dd,
@@ -256,5 +263,5 @@ def _launch_gate_explorer_ui_impl() -> None:
     ):
         w.observe(_on_change, names="value")
 
-    display(widgets.VBox([controls_box, chart_out, verdict_out, interp_out]))
+    display(widgets.VBox([story, controls_box, chart_out, verdict_out, interp_out]))
     render()

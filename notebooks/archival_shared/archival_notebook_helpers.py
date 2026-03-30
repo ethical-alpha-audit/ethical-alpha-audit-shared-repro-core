@@ -38,16 +38,11 @@ def repo_root() -> Path:
     )
 
 
-def run_01_smoke_test_notebook() -> None:
-    """Smoke test: bounded exploration UI + hash-locked CSV/summary contract writes."""
+def launch_01_smoke_interactive() -> None:
+    """Bounded scenario exploration (display only; no contract files)."""
     ROOT = repo_root()
     sys.path.insert(0, str(ROOT / "engine"))
     import corrected_public_engine_v1_1 as eng
-
-    OUT_TAB = ROOT / "outputs" / "tables"
-    OUT_FIG = ROOT / "outputs" / "figures"
-    OUT_TAB.mkdir(parents=True, exist_ok=True)
-    OUT_FIG.mkdir(parents=True, exist_ok=True)
 
     ARCHIVAL_CASE = {
         "case_id": "smoke_core_001",
@@ -103,6 +98,29 @@ def run_01_smoke_test_notebook() -> None:
     _render_exploration(dd.value)
     display(dd)
     display(explore_out)
+
+
+def run_01_smoke_test_contract_only() -> None:
+    """Write smoke_test CSV + summary from the fixed archival case only."""
+    ROOT = repo_root()
+    sys.path.insert(0, str(ROOT / "engine"))
+    import corrected_public_engine_v1_1 as eng
+
+    OUT_TAB = ROOT / "outputs" / "tables"
+    OUT_FIG = ROOT / "outputs" / "figures"
+    OUT_TAB.mkdir(parents=True, exist_ok=True)
+    OUT_FIG.mkdir(parents=True, exist_ok=True)
+
+    ARCHIVAL_CASE = {
+        "case_id": "smoke_core_001",
+        "features": {
+            "intrinsic_safety": 0.58,
+            "evidence_strength": 0.55,
+            "bias_harm_index": 0.44,
+            "uncertainty_calibration": 0.52,
+            "traceability_integrity": 0.53,
+        },
+    }
 
     result = eng.evaluate_case(ARCHIVAL_CASE, profile_name="moderate", mode=eng.MODE_REPLAY)
     result_hash = eng.hash_output(result)
@@ -165,8 +183,14 @@ def run_01_smoke_test_notebook() -> None:
     print("Smoke test artifacts written.")
 
 
-def run_02_utilities_validation_notebook() -> None:
-    """Utilities checks: exploration presets + utilities_validation.csv contract write."""
+def run_01_smoke_test_notebook() -> None:
+    """Back-compat: exploration then contract (same observable behaviour as prior single notebook)."""
+    launch_01_smoke_interactive()
+    run_01_smoke_test_contract_only()
+
+
+def launch_02_utilities_interactive() -> None:
+    """Feature-preset exploration (display only; no CSV)."""
     ROOT = repo_root()
     sys.path.insert(0, str(ROOT / "engine"))
     import corrected_public_engine_v1_1 as eng
@@ -230,6 +254,21 @@ def run_02_utilities_validation_notebook() -> None:
     display(udd)
     display(u_out)
 
+
+def run_02_utilities_validation_contract_only() -> None:
+    """Write utilities_validation.csv from the archival feature vector only."""
+    ROOT = repo_root()
+    sys.path.insert(0, str(ROOT / "engine"))
+    import corrected_public_engine_v1_1 as eng
+
+    ARCHIVAL_FEATURES = {
+        "intrinsic_safety": 0.60,
+        "evidence_strength": 0.58,
+        "bias_harm_index": 0.42,
+        "uncertainty_calibration": 0.55,
+        "traceability_integrity": 0.56,
+    }
+
     FEATURES = ARCHIVAL_FEATURES
 
     profile = eng.CANONICAL_THRESHOLD_PROFILES["moderate"]
@@ -262,14 +301,17 @@ def run_02_utilities_validation_notebook() -> None:
     print("Utilities validation CSV written.")
 
 
-def run_03_demo_pipeline_notebook() -> None:
-    """Demo pipeline: slider over fixed cases + demo_pipeline_summary.txt contract write."""
+def run_02_utilities_validation_notebook() -> None:
+    """Back-compat: exploration then contract write."""
+    launch_02_utilities_interactive()
+    run_02_utilities_validation_contract_only()
+
+
+def launch_03_demo_pipeline_interactive() -> None:
+    """Slider over fixed archival cases in canonical full mode (display only)."""
     ROOT = repo_root()
     sys.path.insert(0, str(ROOT / "engine"))
     import corrected_public_engine_v1_1 as eng
-
-    OUT_FIG = ROOT / "outputs" / "figures"
-    OUT_FIG.mkdir(parents=True, exist_ok=True)
 
     ARCHIVAL_CASES = [
         {
@@ -341,6 +383,50 @@ def run_03_demo_pipeline_notebook() -> None:
     display(slider)
     display(idx_out)
 
+
+def run_03_demo_pipeline_contract_only() -> None:
+    """Write demo_pipeline_summary.txt from the fixed archival batch only."""
+    ROOT = repo_root()
+    sys.path.insert(0, str(ROOT / "engine"))
+    import corrected_public_engine_v1_1 as eng
+
+    OUT_FIG = ROOT / "outputs" / "figures"
+    OUT_FIG.mkdir(parents=True, exist_ok=True)
+
+    ARCHIVAL_CASES = [
+        {
+            "case_id": "demo_replay_pass",
+            "features": {
+                "intrinsic_safety": 0.62,
+                "evidence_strength": 0.60,
+                "bias_harm_index": 0.40,
+                "uncertainty_calibration": 0.58,
+                "traceability_integrity": 0.57,
+            },
+        },
+        {
+            "case_id": "demo_gate_fail",
+            "features": {
+                "intrinsic_safety": 0.35,
+                "evidence_strength": 0.60,
+                "bias_harm_index": 0.40,
+                "uncertainty_calibration": 0.58,
+                "traceability_integrity": 0.57,
+            },
+        },
+        {
+            "case_id": "demo_fullmode_abstention",
+            "features": {
+                "intrinsic_safety": 0.62,
+                "evidence_strength": 0.60,
+                "bias_harm_index": 0.40,
+                "uncertainty_calibration": 0.42,
+                "traceability_integrity": 0.50,
+                "fallback_safety_delta": 0.15,
+            },
+        },
+    ]
+
     CASES = ARCHIVAL_CASES
 
     batch = eng.evaluate_batch(CASES, profile_names=["moderate"], mode=eng.MODE_CANONICAL_FULL)
@@ -392,3 +478,9 @@ def run_03_demo_pipeline_notebook() -> None:
     out_path.parent.mkdir(parents=True, exist_ok=True)
     out_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
     print("Demo pipeline summary written.")
+
+
+def run_03_demo_pipeline_notebook() -> None:
+    """Back-compat: interactive preview then contract write."""
+    launch_03_demo_pipeline_interactive()
+    run_03_demo_pipeline_contract_only()

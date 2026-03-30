@@ -59,7 +59,10 @@ def run_core_reference_demo() -> None:
     print(f"  approved:              {r['approved']}")
     print(f"  result_sha256:         {digest}")
     print()
-    print("For hash-locked CSV/summary artefacts, run notebooks/archival_shared/01_smoke_test.ipynb via reproduce_all.py.")
+    print(
+        "For hash-locked CSV/summary artefacts, run notebooks/archival_shared/technical/01_smoke_test_execute.ipynb "
+        "via reproduce_all.py."
+    )
 
 
 def run_validation_overview_demo() -> None:

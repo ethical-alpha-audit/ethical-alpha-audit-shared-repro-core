@@ -12,7 +12,7 @@ That command is the **only** execution entry point required for shared-core vali
 
 ## Deterministic generation
 
-All artefacts listed in `config/expected_outputs.json` are produced **only** by the archival shared notebooks (`config/notebook_plan.json`), using the authoritative public engine in `engine/corrected_public_engine_v1_1.py`. The harness pins `PYTHONHASHSEED` via `config/harness_settings.json` so Python hash behaviour is stable for the run. Together this yields **deterministically generated outputs** for the locked release state: the same checked-in sources and locked outputs reproduce the same bytes as the pinned SHA-256 values.
+All artefacts listed in `config/expected_outputs.json` are produced **only** by the archival **technical** execute notebooks listed in `config/notebook_plan.json` under `notebooks/archival_shared/technical/`, using the authoritative public engine in `engine/corrected_public_engine_v1_1.py`. The harness pins `PYTHONHASHSEED` via `config/harness_settings.json` so Python hash behaviour is stable for the run. Together this yields **deterministically generated outputs** for the locked release state: the same checked-in sources and locked outputs reproduce the same bytes as the pinned SHA-256 values.
 
 ## Manifest-based validation and hash locking
 
