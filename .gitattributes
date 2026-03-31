@@ -1,2 +1,9 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+
+# Hash-locked deterministic artefacts: store and check out exact bytes.
+# These files are pinned by SHA-256 in config/expected_outputs.json;
+# any line-ending conversion would break the cryptographic contract.
+outputs/**/*.csv -text
+outputs/**/*.txt -text
+logs/actual_manifest.json -text

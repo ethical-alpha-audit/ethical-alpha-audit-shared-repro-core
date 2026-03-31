@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>03_demo_pipeline — Ethical Alpha Audit Shared Repro Core (archival)</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; max-width: 48em; margin: 2em auto; padding: 0 1em; line-height: 1.6; color: #24292e; }
+  h1,h2,h3 { margin-top: 1.4em; }
+  code { background: #f6f8fa; padding: 0.2em 0.4em; border-radius: 3px; font-size: 0.9em; }
+  pre { background: #f6f8fa; padding: 1em; border-radius: 6px; overflow-x: auto; }
+  pre code { background: none; padding: 0; }
+  blockquote { border-left: 4px solid #dfe2e5; margin: 0; padding: 0.5em 1em; color: #6a737d; }
+  table { margin: 1em 0; } th { background: #f6f8fa; }
+  li { margin-bottom: 0.3em; }
+  .archival-banner { background: #fff3cd; border: 1px solid #ffc107; padding: 0.8em 1em; border-radius: 4px; margin-bottom: 1.5em; font-size: 0.9em; }
+</style>
+</head>
+<body>
+<div class="archival-banner">
+<strong>Archival static export</strong> — generated from <code>notebooks/archival_shared/03_demo_pipeline.ipynb</code> on 2026-03-30.
+This is a read-only HTML rendering of the narrative notebook for long-term archival and reviewer accessibility (Rule 9, Ten Simple Rules for Reproducible Research in Jupyter Notebooks).
+For interactive exploration, run the paired <code>*_interactive.ipynb</code> notebook.
+For cryptographic validation, run <code>python reproduce_all.py</code>.
+</div>
+<h1>Demo pipeline — research narrative (archival)</h1>
+<p><strong>Layer A (no code).</strong> Pair with <strong><code>03_demo_pipeline_interactive.ipynb</code></strong>. <strong>Execute:</strong> <code>technical/03_demo_pipeline_execute.ipynb</code>.</p>
+<p><strong>Suite role:</strong> <strong>Canonical</strong> step 3 — <code>demo_pipeline_summary.txt</code>.</p>
+<p><strong>Purpose:</strong> <strong>Fixed triple</strong> of cases in <strong><code>MODE_CANONICAL_FULL</code></strong>: approve path, <strong>hard gate failure</strong>, <strong>abstention / fallback</strong> veto—via <strong><code>evaluate_batch</code></strong>.</p>
+<p><strong>What this demonstrates:</strong> How <strong>non-compensatory gates</strong> interact with <strong>SCM abstention</strong> and <strong>fallback adequacy</strong> in full mode.</p>
+<p><strong>Why this matters:</strong> Full <strong>experiment story</strong> for branch behaviour under one digest.</p>
+<p><strong>How to use:</strong> Read statically; <strong>slider</strong> in the interactive notebook steps the same three <strong>predefined</strong> cases. <strong>Summary file</strong> always reflects the <strong>full</strong> batch.</p>
+<h2>Interactive surface</h2>
+<p>Slider reveals per-case <strong>governance_outcome</strong>, <strong>approved</strong>, <strong>abstention_rate</strong>, <strong>abstention_triggered</strong>, <strong>fallback_adequate</strong>.</p>
+<h2>Interpretation</h2>
+<p>Digest fingerprints the batch object; changing any case dict or engine branch shifts the hash.</p>
+<h2>Scientific integrity note</h2>
+<p>Exploration does not trim the batch written by the <strong>execute</strong> notebook.</p>
+<h2>Expected output snapshot</h2>
+<p>Deterministic output from the technical execute notebook under the moderate profile in canonical_full_mode:</p>
+<pre><code>
+Cases in batch:           3
+Approved (moderate):      1
+Rejected (moderate):      2
+- demo_replay_pass: APPROVE (approved=1) abstention_rate=0.401312 abstention_triggered=0 fallback_adequate=1
+- demo_gate_fail: REJECT (approved=0) abstention_rate=0.401312 abstention_triggered=0 fallback_adequate=1
+- demo_fullmode_abstention: REJECT (approved=0) abstention_rate=0.598688 abstention_triggered=1 fallback_adequate=0
+</code></pre>
+<p>Three contrasting outcomes demonstrate the engine&#x27;s branch coverage: (1) <strong>demo_replay_pass</strong> is approved — all gates pass and abstention is not triggered; (2) <strong>demo_gate_fail</strong> is rejected — the safety gate fails (intrinsic_safety 0.35 &lt; threshold 0.50); (3) <strong>demo_fullmode_abstention</strong> is rejected — all gates pass, but the SCM abstention override fires (abstention_rate 0.599 &gt; 0.5) and fallback safety is inadequate (0.15 &lt; 0.30).</p>
+</body>
+</html>

@@ -1,7 +1,9 @@
 {
   "repo_name": "ethical-alpha-audit-shared-repro-core",
-  "manuscript_status": "starter-pack placeholder",
-  "environment_status": "replace placeholder lock data with real frozen environment",
-  "output_policy": "All manuscript figures, tables, and derived artefacts should be generated into outputs/",
-  "release_policy": "Tag release, archive in Zenodo, then backfill DOI into manuscript and README"
+  "version": "1.0.0",
+  "manuscript_status": "companion artefact for multi-paper bundle (P1–P5)",
+  "environment_status": "pinned in requirements.txt and environment.lock",
+  "output_policy": "All deterministic artefacts are generated into outputs/ and hash-locked in config/expected_outputs.json",
+  "release_policy": "Tag release, archive in Zenodo, then backfill DOI into manuscript and README",
+  "validation_entry_point": "python reproduce_all.py"
 }

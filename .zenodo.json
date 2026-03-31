@@ -1,21 +1,22 @@
 {
   "title": "Ethical Alpha Audit Shared Reproducibility Core",
+  "description": "Shared reproducibility core for the Ethical Alpha Audit public stack: deterministic Jupyter harness, public governance engine integration (v1.1), manifest-based SHA-256 output validation, and archival notebooks for smoke, utilities, and demo pipeline checks.",
+  "upload_type": "software",
   "creators": [
     {
       "name": "Brown, Walter",
-      "affiliation": "Ethical Alpha Audit"
+      "affiliation": "Ethical Alpha Audit",
+      "orcid": "0000-0002-6050-8522"
     }
   ],
-  "description": "Shared utilities, schemas, helpers, loaders, validation routines, and common plotting functions used across the paper repos.",
-  "upload_type": "software",
-  "license": "MIT",
   "keywords": [
-    "ethical alpha audit",
-    "shared core",
+    "AI governance",
     "reproducibility",
+    "clinical AI",
+    "audit",
     "jupyter",
-    "github",
     "zenodo"
   ],
+  "license": "MIT",
   "access_right": "open"
 }

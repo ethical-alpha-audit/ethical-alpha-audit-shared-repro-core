@@ -127,7 +127,7 @@ def run_01_smoke_test_contract_only() -> None:
 
     csv_path = OUT_TAB / "smoke_test_results.csv"
     with open(csv_path, "w", newline="", encoding="utf-8") as f:
-        w = csv.writer(f)
+        w = csv.writer(f, lineterminator="\n")
         w.writerow(
             [
                 "case_id",
@@ -179,7 +179,7 @@ def run_01_smoke_test_contract_only() -> None:
         f"SHA-256 (canonical JSON result):    {result_hash}",
         "",
     ]
-    summary_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    summary_path.write_bytes(("\n".join(lines) + "\n").encode("utf-8"))
     print("Smoke test artifacts written.")
 
 
@@ -293,7 +293,7 @@ def run_02_utilities_validation_contract_only() -> None:
     out_path = ROOT / "outputs" / "tables" / "utilities_validation.csv"
     out_path.parent.mkdir(parents=True, exist_ok=True)
     with open(out_path, "w", newline="", encoding="utf-8") as f:
-        w = csv.writer(f)
+        w = csv.writer(f, lineterminator="\n")
         w.writerow(["check_name", "value"])
         for name, val in rows:
             w.writerow([name, val])
@@ -476,7 +476,7 @@ def run_03_demo_pipeline_contract_only() -> None:
 
     out_path = OUT_FIG / "demo_pipeline_summary.txt"
     out_path.parent.mkdir(parents=True, exist_ok=True)
-    out_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    out_path.write_bytes(("\n".join(lines) + "\n").encode("utf-8"))
     print("Demo pipeline summary written.")
 
 

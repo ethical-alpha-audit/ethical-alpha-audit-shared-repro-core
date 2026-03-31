@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>00_about_layer — Ethical Alpha Audit Shared Repro Core (archival)</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; max-width: 48em; margin: 2em auto; padding: 0 1em; line-height: 1.6; color: #24292e; }
+  h1,h2,h3 { margin-top: 1.4em; }
+  code { background: #f6f8fa; padding: 0.2em 0.4em; border-radius: 3px; font-size: 0.9em; }
+  pre { background: #f6f8fa; padding: 1em; border-radius: 6px; overflow-x: auto; }
+  pre code { background: none; padding: 0; }
+  blockquote { border-left: 4px solid #dfe2e5; margin: 0; padding: 0.5em 1em; color: #6a737d; }
+  table { margin: 1em 0; } th { background: #f6f8fa; }
+  li { margin-bottom: 0.3em; }
+  .archival-banner { background: #fff3cd; border: 1px solid #ffc107; padding: 0.8em 1em; border-radius: 4px; margin-bottom: 1.5em; font-size: 0.9em; }
+</style>
+</head>
+<body>
+<div class="archival-banner">
+<strong>Archival static export</strong> — generated from <code>notebooks/website_interactive/00_about_layer.ipynb</code> on 2026-03-30.
+This is a read-only HTML rendering of the narrative notebook for long-term archival and reviewer accessibility (Rule 9, Ten Simple Rules for Reproducible Research in Jupyter Notebooks).
+For interactive exploration, run the paired <code>*_interactive.ipynb</code> notebook.
+For cryptographic validation, run <code>python reproduce_all.py</code>.
+</div>
+<h1>Notebook suite orientation (website layer)</h1>
+<p><strong>Layer A — non-canonical.</strong> Excluded from <code>config/notebook_plan.json</code> and <code>config/expected_outputs.json</code>.</p>
+<h2>Two-layer model</h2>
+<table border='1' cellpadding='6' cellspacing='0' style='border-collapse:collapse;'>
+<tr><td>Layer</td><td>Role</td><td>Typical files</td></tr>
+<tr><td><strong>A — Reader / interactive</strong></td><td>Markdown-only <strong>story</strong> notebooks (GitHub-safe) + <strong>interactive</strong> notebooks (ipywidgets; use <strong>Voila</strong> to hide inputs)</td><td><code>*_story</code> paths below, <code>*_interactive</code></td></tr>
+<tr><td><strong>B — Technical</strong></td><td>Code cells + contract regeneration</td><td><code>archival_shared/technical/*_execute.ipynb</code></td></tr>
+</table>
+<h2>Where to start</h2>
+<ul>
+<li><strong>Canonical narrative (no code):</strong> <code>notebooks/archival_shared/01_smoke_test.ipynb</code>, <code>02_*.ipynb</code>, <code>03_*.ipynb</code></li>
+<li><strong>Bounded interaction:</strong> <code>*_interactive.ipynb</code> in the same folder (archival) or <strong><code>01_gate_explorer_interactive.ipynb</code></strong> here</li>
+<li><strong>Reproducibility:</strong> <code>python reproduce_all.py</code> (executes <strong>technical</strong> notebooks only)</li>
+</ul>
+<h2>Scientific integrity</h2>
+<p>Website demos call the <strong>same public engine</strong> as archival paths but <strong>never</strong> replace manifest validation.</p>
+</body>
+</html>

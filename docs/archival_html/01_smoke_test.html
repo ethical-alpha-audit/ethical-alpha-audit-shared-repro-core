@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>01_smoke_test — Ethical Alpha Audit Shared Repro Core (archival)</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; max-width: 48em; margin: 2em auto; padding: 0 1em; line-height: 1.6; color: #24292e; }
+  h1,h2,h3 { margin-top: 1.4em; }
+  code { background: #f6f8fa; padding: 0.2em 0.4em; border-radius: 3px; font-size: 0.9em; }
+  pre { background: #f6f8fa; padding: 1em; border-radius: 6px; overflow-x: auto; }
+  pre code { background: none; padding: 0; }
+  blockquote { border-left: 4px solid #dfe2e5; margin: 0; padding: 0.5em 1em; color: #6a737d; }
+  table { margin: 1em 0; } th { background: #f6f8fa; }
+  li { margin-bottom: 0.3em; }
+  .archival-banner { background: #fff3cd; border: 1px solid #ffc107; padding: 0.8em 1em; border-radius: 4px; margin-bottom: 1.5em; font-size: 0.9em; }
+</style>
+</head>
+<body>
+<div class="archival-banner">
+<strong>Archival static export</strong> — generated from <code>notebooks/archival_shared/01_smoke_test.ipynb</code> on 2026-03-30.
+This is a read-only HTML rendering of the narrative notebook for long-term archival and reviewer accessibility (Rule 9, Ten Simple Rules for Reproducible Research in Jupyter Notebooks).
+For interactive exploration, run the paired <code>*_interactive.ipynb</code> notebook.
+For cryptographic validation, run <code>python reproduce_all.py</code>.
+</div>
+<h1>Shared-core smoke test — research narrative (archival)</h1>
+<p><strong>Layer A — reader surface (no code in this file).</strong> Pair with <strong><code>01_smoke_test_interactive.ipynb</code></strong> for bounded <strong>ipywidgets</strong> exploration, or open that file through <strong>Voila</strong> for a code-free interactive experience.</p>
+<p><strong>Suite role:</strong> <strong>Canonical</strong> shared-core demonstration (step 1 in <code>config/notebook_plan.json</code>). Hash-locked artefacts are produced only by the <strong>technical companion</strong> (<code>technical/01_smoke_test_execute.ipynb</code>) via <code>python reproduce_all.py</code>.</p>
+<p><strong>Purpose:</strong> Demonstrate an <strong>auditable decision framework</strong> that evaluates a <strong>fixed</strong> deployment case end-to-end in <strong>replay mode</strong> using <code>corrected_public_engine_v1_1.py</code>, yielding <strong>deterministic, inspectable</strong> APPROVE / REJECT / ABSTAIN-class outcome fields.</p>
+<p><strong>What this demonstrates:</strong> <strong>Non-compensatory (conjunctive) gate logic</strong>, <strong>explicit activation thresholds</strong> under the <strong>moderate</strong> profile, and <strong>structured override governance</strong> paths expressed only through the public engine API—not a reimplementation in prose.</p>
+<p><strong>Why this matters:</strong> Establishes <strong>run → serialise → hash-lock</strong> credibility for the frozen engine before broader claims.</p>
+<p><strong>How to use this artefact:</strong> Read on <strong>GitHub / nbviewer</strong> without a kernel. For <strong>live</strong> scenario comparison (still bounded, <strong>no</strong> free-form inputs), open <strong><code>01_smoke_test_interactive.ipynb</code></strong> and <strong>Restart &amp; Run All</strong>, or use <strong>Voila</strong> on that path. <strong>Canonical outputs</strong> (<code>outputs/tables/smoke_test_results.csv</code>, <code>outputs/figures/smoke_test_summary.txt</code>) come <strong>only</strong> from the frozen archival case when the <strong>execute</strong> notebook runs.</p>
+<h2>Interactive experiment surface (paired artefact)</h2>
+<p>Use the <strong>interactive</strong> notebook to: choose among <strong>predefined</strong> replay scenarios; see <strong>governance_outcome</strong>, <strong>all_gates_pass</strong>, and <strong>compensatory_score</strong> update from the engine; confirm that <strong>only</strong> the archival scenario drives contract files (exploration is display-only for disk).</p>
+<h2>Interpretation</h2>
+<p>The contract row records <strong>governance_outcome</strong>, gate summary, compensatory fields, and <strong><code>result_sha256</code></strong> from <strong><code>hash_output</code></strong>. A second scenario in the widget shows how <strong>low intrinsic safety</strong> yields <strong>REJECT</strong> under the same profile—illustrating <strong>non-compensatory</strong> failure.</p>
+<h2>Scientific integrity note</h2>
+<p><strong>Exploratory</strong> widget state never overrides <strong>archival</strong> dicts used for manifest validation. <strong><code>reproduce_all.py</code></strong> runs <strong>execute</strong> notebooks only; behaviour and byte contracts are unchanged from prior releases.</p>
+<h2>Expected output snapshot</h2>
+<p>The following is the deterministic output produced by the technical execute notebook (<code>technical/01_smoke_test_execute.ipynb</code>) for the archival case under the moderate profile in replay mode. This snapshot can be regenerated by running <code>python reproduce_all.py</code>.</p>
+<pre><code>
+case_id,profile_name,mode,governance_outcome,all_gates_pass,compensatory_score,compensatory_approved,approved,result_sha256
+smoke_core_001,moderate,replay_mode,APPROVE,1,0.5535,1,1,4c797545771b95ddfefb32e810a58d0431de8d6eb6317b096f0f0a7fc2c84584
+</code></pre>
+<p><strong>Governance outcome: APPROVE</strong> — all five gates pass under the moderate threshold profile. The compensatory score (0.5535) exceeds the compensatory threshold (0.50). The result SHA-256 digest is pinned in <code>config/expected_outputs.json</code> for automated validation.</p>
+</body>
+</html>
