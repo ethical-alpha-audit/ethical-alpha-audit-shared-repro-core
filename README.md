@@ -97,9 +97,16 @@ Read-only HTML renderings of all narrative notebooks are included in `docs/archi
 
 ### Interactive execution
 
+#### Local installlation or Docker
 Interactive notebooks can be run locally after installing dependencies, or via Docker. 
 
+#### Binder
+Clicking the Binder link below allows you to run GitHub repositories in an interactive environment directly in your browser
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/ethical-alpha-audit/ethical-alpha-audit-shared-repro-core.git/main)
+
+#### Ethical Alpha Audit website
+This research is also hosted on the research pages of the Ethical Alpha Audit.
+https://www.ethicalalphaaudit.com/
 
 ### Notes
 
