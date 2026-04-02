@@ -65,22 +65,40 @@ Traceability from file to notebook: `config/trace_map.json`.
 The following links open **narrative** notebooks (no code on NBViewer). Full validation runs the **technical** execute notebooks via the harness.
 
 ### Experiment narrative (NBViewer)
-
+#### Archival
 1. **Smoke Test**  
    Verifies environment integrity, deterministic settings, and numerical stability.
-
    https://nbviewer.org/github/ethical-alpha-audit/ethical-alpha-audit-shared-repro-core/blob/main/notebooks/archival_shared/01_smoke_test.ipynb
-
 2. **Utilities Validation**  
    Validates core utility functions, statistical components, and supporting infrastructure used throughout the pipeline.
-
    https://nbviewer.org/github/ethical-alpha-audit/ethical-alpha-audit-shared-repro-core/blob/main/notebooks/archival_shared/02_utilities_validation.ipynb
-
 3. **Demonstration Pipeline**  
    Executes the full governance evaluation pipeline on the reference dataset, reproducing the primary outputs reported in the manuscript.
-
    https://nbviewer.org/github/ethical-alpha-audit/ethical-alpha-audit-shared-repro-core/blob/main/notebooks/archival_shared/03_demo_pipeline.ipynb
-
+#### Reference
+1. **Core Execute**  
+   Technical — core API echo.
+   https://nbviewer.org/github/ethical-alpha-audit/ethical-alpha-audit-shared-repro-core/blob/main/notebooks/archival_shared/01_smoke_test.ipynb
+2. **Core Story**  
+   Core engine API — reference narrative.
+   https://nbviewer.org/github/ethical-alpha-audit/ethical-alpha-audit-shared-repro-core/blob/main/notebooks/archival_shared/02_utilities_validation.ipynb
+3. **Validation Execute**  
+   Technical — validation contract echo.
+   https://nbviewer.org/github/ethical-alpha-audit/ethical-alpha-audit-shared-repro-core/blob/main/notebooks/archival_shared/03_demo_pipeline.ipynb
+4. **Validation Story**  
+   Executes the full governance evaluation pipeline on the reference dataset, reproducing the primary outputs reported in the manuscript.
+   https://nbviewer.org/github/ethical-alpha-audit/ethical-alpha-audit-shared-repro-core/blob/main/notebooks/archival_shared/03_demo_pipeline.ipynb
+#### Website Interactive
+1. **About Layer**  
+   Notebook suite orientation.
+   https://nbviewer.org/github/ethical-alpha-audit/ethical-alpha-audit-shared-repro-core/blob/main/notebooks/archival_shared/01_smoke_test.ipynb
+2. **Gate Explorer Interactive**  
+   Gate & verdict explorer — interactive instrument
+   https://nbviewer.org/github/ethical-alpha-audit/ethical-alpha-audit-shared-repro-core/blob/main/notebooks/archival_shared/02_utilities_validation.ipynb
+3. **Gate Explorer Story**  
+   Interactive gate exploration — narrative.
+   https://nbviewer.org/github/ethical-alpha-audit/ethical-alpha-audit-shared-repro-core/blob/main/notebooks/archival_shared/03_demo_pipeline.ipynb
+   
 ### Harness vs NBViewer
 
 `python reproduce_all.py` executes `notebooks/archival_shared/technical/*_execute.ipynb` (see `config/notebook_plan.json`). NBViewer links above point at **markdown-only** story notebooks. Paired **`*_interactive.ipynb`** files provide **ipywidgets**; serve with [Voila](https://voila.readthedocs.io/) for a code-free UI (`voila.json`).
