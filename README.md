@@ -164,6 +164,21 @@ For a concise narrative of the workflow, see `docs/reproducibility_statement.md`
 
 This repository is the **shared reproducibility core** for the Ethical Alpha Audit public stack: deterministic harness, public engine wiring, config contracts, and archival notebooks. It is **not** a paper-specific submission repository.
 
+## Interactive execution
+
+### Local installlation or Docker
+Interactive notebooks can be run locally after installing dependencies, or via Docker. 
+
+### Binder
+Clicking the Binder link below allows you to run GitHub repositories in an interactive environment directly in your browser
+
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/ethical-alpha-audit/ethical-alpha-audit-paper-4-historical-replay.git/main)
+
+### Ethical Alpha Audit website
+This research is also hosted on the research pages of the Ethical Alpha Audit.
+
+https://www.ethicalalphaaudit.com/
+
 ## What this repository does not contain
 
 - Paper-specific submission bundles, reviewer-only document chains, or private manuscript drops (those belong in paper-specific repositories)
