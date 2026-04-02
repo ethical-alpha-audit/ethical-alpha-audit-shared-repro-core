@@ -2,7 +2,7 @@
 
 ## Why this directory is empty
 
-This shared reproducibility core does **not** ship external datasets. All outputs are generated from **fixed internal feature vectors** hardcoded in `notebooks/archival_shared/archival_notebook_helpers.py`. These vectors are synthetic governance cases designed to exercise the engine's gate, compensatory, and abstention/fallback logic paths.
+This shared reproducibility core does **not** ship external datasets. All outputs are generated from **fixed internal feature vectors** hardcoded in `eaa/notebooks/archival.py` (notebooks import via `notebooks/archival_shared/archival_notebook_helpers.py`). These vectors are synthetic governance cases designed to exercise the engine's gate, compensatory, and abstention/fallback logic paths.
 
 **Reproducibility is achieved without external data** because:
 

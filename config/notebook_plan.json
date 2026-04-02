@@ -1,7 +1,7 @@
 {
   "execution_order": [
-    "notebooks/archival_shared/technical/01_smoke_test_execute.ipynb",
-    "notebooks/archival_shared/technical/02_utilities_validation_execute.ipynb",
-    "notebooks/archival_shared/technical/03_demo_pipeline_execute.ipynb"
+    {"path": "notebooks/archival_shared/technical/01_smoke_test_execute.ipynb"},
+    {"path": "notebooks/archival_shared/technical/02_utilities_validation_execute.ipynb"},
+    {"path": "notebooks/archival_shared/technical/03_demo_pipeline_execute.ipynb"}
   ]
 }

@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "locked_for_stage": "2-r2-align",
+  "governance": "Every path below is enumerated explicitly. Wildcard-only rules are not used for parity or R2 vendoring.",
+  "transitional_sharing_model": "Stage 2 defaults to verified copy + CI drift detection across repositories. Shared logic is authored once here; that is not the same as an ideal long-term distribution mechanism—submodule or internal package remains an explicit architectural follow-up.",
+  "governed_paths": [
+    "engine/corrected_public_engine_v1_1.py",
+    "reproduce_all.py",
+    "scripts/notebook_runner.py",
+    "scripts/validate_outputs.py",
+    "scripts/hash_manifest.py",
+    "scripts/export_html.py",
+    "scripts/verify_shared_logic_parity.py",
+    "scripts/hash_shared_logic.py",
+    "scripts/validate_notebook_standard.py",
+    "eaa/__init__.py",
+    "eaa/paths.py",
+    "eaa/notebooks/__init__.py",
+    "eaa/notebooks/archival.py",
+    "notebooks/archival_shared/archival_notebook_helpers.py",
+    "config/notebook_plan.json",
+    "config/expected_outputs.json",
+    "config/harness_settings.json",
+    "config/baseline_output_hashes.json",
+    "config/trace_map.json",
+    "config/engine_authority.json",
+    "config/shared_logic_inventory.json"
+  ],
+  "manifest_output_path": "config/shared_logic_manifest.json",
+  "manifest_note": "The manifest hashes every path in governed_paths only (not itself). Regenerate with scripts/hash_shared_logic.py after any governed change."
+}

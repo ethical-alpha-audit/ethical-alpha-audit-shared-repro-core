@@ -6,6 +6,7 @@ __pycache__/
 outputs/release_bundle/*.zip
 paper_submission_bundle/
 reviewer_private/
+docs/notebook_exports/*.html
 *.docx
 *.doc
 *.pdf
