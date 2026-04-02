@@ -11,7 +11,7 @@
 
 ## Input feature vectors
 
-- **Source:** Defined inline in `notebooks/archival_shared/archival_notebook_helpers.py`
+- **Source:** Defined inline in `eaa/notebooks/archival.py` (import shim: `notebooks/archival_shared/archival_notebook_helpers.py`)
 - **Nature:** Synthetic governance feature vectors (not derived from real-world data)
 - **Purpose:** Exercise gate pass, gate fail, compensatory scoring, and abstention/fallback logic paths
 

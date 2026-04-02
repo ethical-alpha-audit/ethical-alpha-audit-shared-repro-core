@@ -1,0 +1,9 @@
+{
+  "canonical_engine_relative_path": "engine/corrected_public_engine_v1_1.py",
+  "authoring": "This file is authored only in SHARED CORE. Paper 4 (R2) may consume verified copies; drift is detected via config/shared_logic_manifest.json and scripts/verify_shared_logic_parity.py.",
+  "supersession_requires": [
+    "Explicit documented decision and PR review",
+    "Regeneration of config/shared_logic_manifest.json (scripts/hash_shared_logic.py)",
+    "Reconciliation of config/expected_outputs.json and baseline_output_hashes.json if engine outputs change"
+  ]
+}

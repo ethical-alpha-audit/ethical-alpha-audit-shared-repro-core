@@ -2,7 +2,7 @@
 
 ## Computational workflow
 
-1. **Inputs:** Fixed synthetic governance feature vectors defined inline in `notebooks/archival_shared/archival_notebook_helpers.py`. No external datasets are required for the shared-core validation path.
+1. **Inputs:** Fixed synthetic governance feature vectors defined inline in `eaa/notebooks/archival.py` (notebook shim `archival_notebook_helpers.py`). No external datasets are required for the shared-core validation path.
 
 2. **Pre-processing:** None. Feature vectors are consumed directly by the engine.
 
