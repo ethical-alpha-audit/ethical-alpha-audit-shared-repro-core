@@ -1,6 +1,6 @@
 # Ethical Alpha Audit Shared Repro Core
 
-> **Zenodo DOI:** [![DOI](https://zenodo.org/badge/1194625255.svg)](https://doi.org/10.5281/zenodo.19322345)
+[![DOI](https://zenodo.org/badge/1194625255.svg)](https://doi.org/10.5281/zenodo.19322345)
 
 ## Reviewer quick validation (no execution required)
 
