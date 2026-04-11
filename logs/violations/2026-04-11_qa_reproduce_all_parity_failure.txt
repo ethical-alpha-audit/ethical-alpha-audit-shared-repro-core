@@ -1,0 +1,15 @@
+QA session (Shared Core QA agent) — logged observation / blocking gate
+
+Blocking failure (reproducibility pipeline):
+- Command: python reproduce_all.py
+- Step failed: Shared logic parity (manifest) — scripts/verify_shared_logic_parity.py
+- Reason: Hash drift vs config/shared_logic_manifest.json when comparing to git blob at HEAD:
+  - eaa/__init__.py — manifest=47f84508b6bd5c294b9d94abb14b6a5892063b592271ef0a2842646b176ab828 actual=00e7827c7dd66ff24b912c1bca2a9d284a96c32af8cce614ad0cc67f8ee1baea
+  - scripts/hash_manifest.py — manifest=0d9b7d434633090ec06493eac682880ca2d45bac8742f9d2c8f627689a5304a3 actual=53cb4910cfb1ff72b79996169c453a0850f5c224b22262e9aaff0bd81e54c641
+
+Notebook corpus defect:
+- Path: notebooks/example_notebook.ipynb
+- Reason: File content is not valid Jupyter notebook JSON (nbformat NotJSONError).
+
+Governance note (no agent-forbidden action taken):
+- Git working tree was not clean at session start (modified logs/actual_manifest.json and technical execute notebooks per git status). Portfolio snapshot does not yet record shared-core commit SHA.
