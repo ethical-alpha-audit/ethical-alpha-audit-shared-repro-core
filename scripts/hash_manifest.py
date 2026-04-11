@@ -1,10 +1,30 @@
-
 import hashlib
 import json
+import os
+import tempfile
 from pathlib import Path
 from datetime import datetime, UTC
 
 BASE_DIR = Path(__file__).resolve().parents[1]
+
+
+def _write_json_atomic(path: Path, data: dict) -> None:
+    """Write JSON via a temp file + replace (more reliable on Windows than reopen-in-place)."""
+    path.parent.mkdir(parents=True, exist_ok=True)
+    payload = json.dumps(data, indent=2)
+    with tempfile.NamedTemporaryFile(
+        mode="w",
+        encoding="utf-8",
+        newline="\n",
+        dir=path.parent,
+        delete=False,
+        prefix=f"{path.stem}.",
+        suffix=".tmp.json",
+    ) as tmp:
+        tmp.write(payload)
+        tmp.flush()
+        tmp_path = tmp.name
+    os.replace(tmp_path, path)
 
 def sha256_file(path: Path) -> str:
     h = hashlib.sha256()
@@ -25,8 +45,7 @@ def build_manifest():
         else:
             manifest["files"].append({"path": item["path"], "sha256": "", "exists": False})
     out_path = BASE_DIR / "logs" / "actual_manifest.json"
-    with open(out_path, "w", encoding="utf-8") as f:
-        json.dump(manifest, f, indent=2)
+    _write_json_atomic(out_path, manifest)
     return out_path
 
 if __name__ == "__main__":

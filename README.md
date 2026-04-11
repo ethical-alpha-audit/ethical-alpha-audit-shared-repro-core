@@ -154,6 +154,8 @@ For a concise narrative of the workflow, see `docs/reproducibility_statement.md`
 | `notebooks/reference/` | Reference notebooks **not** in the active execution chain |
 | `scripts/` | Notebook runner, manifest builder, output validator |
 | `tests/` | Lightweight structure / harness tests |
+| `eaa/` | Shared Python package (`repo_root`, archival notebook implementations); see `docs/public_interfaces.md` |
+| `inputs/` | Portfolio input root for shared-core (no required attachments; see `inputs/README.md`) |
 | `outputs/` | Declared validation artefacts only (hash-locked in `config/expected_outputs.json`) |
 | `logs/` | Runtime manifests (`actual_manifest.json` after a full run) |
 | `docs/` | Reproducibility statement, methods note, provenance, archival HTML exports |

@@ -1,10 +1,10 @@
 # SHA-256 manifest for key repository files
-# Generated: 2026-03-30
+# Generated: 2026-04-11
 
 875f73150fae43695ecc6659581e8e25b365ad6171c9e13629fb01e923ab311c  engine/corrected_public_engine_v1_1.py
 3158e9fc1e339b1532de03888050f2b46fa5781b7a9f1ccaa76faf001882d36c  reproduce_all.py
 a457534f16b4dfd63f2fa6a46463350bdc1b052731787a22ad84c09570c2b154  scripts/notebook_runner.py
-0d9b7d434633090ec06493eac682880ca2d45bac8742f9d2c8f627689a5304a3  scripts/hash_manifest.py
+354e6f9f736c352770aeb95fe9d8afcced3a816d635f483e9567ef877733a554  scripts/hash_manifest.py
 7a4ef1e05b47e829ab0033d6acf481dfe43f9f50335e9838aa5ccf9c476d8138  scripts/validate_outputs.py
 d9051f318e27a9ed9f614eb04f2627f77101aada4e5a67546a6bc0a754c88956  config/expected_outputs.json
 33de12e2ac75425e959878362609fd0f1c17cabfd55fc9be3962eff869bee7d1  config/notebook_plan.json
