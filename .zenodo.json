@@ -1,4 +1,5 @@
 {
+  "doi": "10.5281/zenodo.19389890",
   "title": "Ethical Alpha Audit Shared Reproducibility Core",
   "description": "Shared reproducibility core for the Ethical Alpha Audit public stack: deterministic Jupyter harness, public governance engine integration (v1.1), manifest-based SHA-256 output validation, and archival notebooks for smoke, utilities, and demo pipeline checks.",
   "upload_type": "software",

@@ -1,6 +1,6 @@
 # Ethical Alpha Audit Shared Repro Core
 
-[![DOI](https://zenodo.org/badge/1194625255.svg)](https://doi.org/10.5281/zenodo.19322345)
+[![DOI](https://zenodo.org/badge/1194625255.svg)](https://doi.org/10.5281/zenodo.19389890)
 
 ## Reviewer quick validation (no execution required)
 
@@ -192,7 +192,7 @@ Release-ready means: engine present, plan valid, outputs generated and **hash-lo
 
 ## Archiving
 
-For Zenodo-oriented metadata prepared alongside the repository, see `.zenodo.json`. Deposit-specific DOIs are assigned **only** when a version is published on Zenodo (not embedded here).
+For Zenodo-oriented metadata prepared alongside the repository, see `.zenodo.json`. The canonical software DOI is recorded in `CITATION.cff` (`doi: 10.5281/zenodo.19389890`).
 
 ## Reproducibility assurance
 

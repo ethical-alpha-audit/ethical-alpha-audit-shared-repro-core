@@ -4,19 +4,19 @@ Rows marked **VERIFIED** have direct execution evidence from the QA session note
 
 | ID | Claim | Evidence | Status |
 |----|--------|----------|--------|
-| T1 | `outputs/tables/smoke_test_results.csv` matches pin in `config/expected_outputs.json` | `python scripts/validate_outputs.py` → `VALIDATION PASSED` after `python reproduce_all.py` on HEAD `ddc8c86b7e1f2ec0dad9f1e0b1617907bfb0b0f5` (2026-04-11) | **VERIFIED** |
+| T1 | `outputs/tables/smoke_test_results.csv` matches pin in `config/expected_outputs.json` | `python scripts/validate_outputs.py` → `VALIDATION PASSED` after `python reproduce_all.py` on HEAD `9cd8aea24f1d9d1daf1bc992349716ef2f6a523a` (2026-04-12) | **VERIFIED** |
 | T2 | `outputs/figures/smoke_test_summary.txt` matches pin | same as T1 | **VERIFIED** |
 | T3 | `outputs/tables/utilities_validation.csv` matches pin | same as T1 | **VERIFIED** |
 | T4 | `outputs/figures/demo_pipeline_summary.txt` matches pin | same as T1 | **VERIFIED** |
 | T5 | `config/trace_map.json` paths correspond to governed outputs | T1–T4 VERIFIED; `scripts/validate_notebook_standard.py` passed in same `reproduce_all.py` run | **VERIFIED** |
-| P1 | `eaa.paths.repo_root()` importable | `python -c "from eaa.paths import repo_root; print(repo_root())"` success (2026-04-11) | **VERIFIED** |
-| P2 | `eaa.notebooks.archival` importable | `python -c "import eaa.notebooks.archival"` success (2026-04-11) | **VERIFIED** |
-| P3 | `engine.corrected_public_engine_v1_1.evaluate_case` exists | `python -c "import engine.corrected_public_engine_v1_1 as eng; assert hasattr(eng, 'evaluate_case')"` success (2026-04-11) | **VERIFIED** |
-| N1 | Technical plan notebooks in `config/notebook_plan.json` execute with fresh kernel | `reproduce_all.py` notebook step: three notebooks returned `status: ok`; durations 5.176s / 4.258s / 3.365s (2026-04-11) | **VERIFIED** |
-| R1 | Full `reproduce_all.py` pipeline completes including shared-logic parity | `python reproduce_all.py` exit code 0; final line `ALL STEPS PASSED`; `PARITY VERIFICATION PASSED` from `scripts/verify_shared_logic_parity.py` (2026-04-11) | **VERIFIED** |
-| R2 | `config/shared_logic_manifest.json` matches `git show HEAD:<path>` for all entries | Same session as R1; parity step passed (2026-04-11) | **VERIFIED** |
-| N2 | Every `*.ipynb` under `notebooks/` is valid JSON and executes | 17 unique paths under `notebooks/` (deduped by `Path.resolve()`); in-memory execute with outputs cleared, `python3` kernel, all `OK` including `notebooks/example_notebook.ipynb` (2026-04-11) | **VERIFIED** |
-| G1 | Portfolio `eaa_system/system_snapshot.json` binds `repos.shared-core.commit` to this repo HEAD | Snapshot still shows `"shared-core": {"commit": null, ...}`; local `git rev-parse HEAD` = `ddc8c86b7e1f2ec0dad9f1e0b1617907bfb0b0f5` (2026-04-11) | **NOT VERIFIED** |
-| U1 | Unit tests pass | `python -m pytest -q` → `3 passed` (2026-04-11) | **VERIFIED** |
+| P1 | `eaa.paths.repo_root()` importable | `python -c "from eaa.paths import repo_root; print(repo_root())"` success (2026-04-12) | **VERIFIED** |
+| P2 | `eaa.notebooks.archival` importable | `python -c "import eaa.notebooks.archival"` success (2026-04-12) | **VERIFIED** |
+| P3 | `engine.corrected_public_engine_v1_1.evaluate_case` exists | `python -c "import engine.corrected_public_engine_v1_1 as eng; assert hasattr(eng, 'evaluate_case')"` success (2026-04-12) | **VERIFIED** |
+| N1 | Technical plan notebooks in `config/notebook_plan.json` execute with fresh kernel | `reproduce_all.py` notebook step: three notebooks returned `status: ok` (2026-04-12) | **VERIFIED** |
+| R1 | Full `reproduce_all.py` pipeline completes including shared-logic parity | `python reproduce_all.py` exit code 0; final line `ALL STEPS PASSED`; `PARITY VERIFICATION PASSED` from `scripts/verify_shared_logic_parity.py` (2026-04-12) | **VERIFIED** |
+| R2 | `config/shared_logic_manifest.json` matches `git show HEAD:<path>` for all entries | Same session as R1; parity step passed (2026-04-12) | **VERIFIED** |
+| N2 | Every `*.ipynb` under `notebooks/` is valid JSON and executes | 17 unique paths under `notebooks/` (deduped by `Path.resolve()`); in-memory execute with outputs cleared, `python3` kernel, all `OK` including `notebooks/example_notebook.ipynb` (2026-04-12) | **VERIFIED** |
+| G1 | Portfolio `eaa_system/system_snapshot.json` binds `repos.shared-core.commit` to this repo HEAD | Cross-repo audit 2026-04-12: snapshot lists `repos.shared-core.commit` = `9cd8aea24f1d9d1daf1bc992349716ef2f6a523a`; matches `git rev-parse HEAD` on the built tree | **VERIFIED** |
+| U1 | Unit tests pass | `python -m pytest -q` → `3 passed` (2026-04-12) | **VERIFIED** |
 
-**Summary:** **13 / 14** rows **VERIFIED**; **1 NOT VERIFIED** (G1 portfolio snapshot binding — governance outside this repo); **0 FAILED**.
+**Summary:** **14 / 14** rows **VERIFIED**; **0 NOT VERIFIED**; **0 FAILED**.

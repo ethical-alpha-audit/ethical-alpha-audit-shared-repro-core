@@ -1,7 +1,7 @@
 cff-version: 1.2.0
 title: "Ethical Alpha Audit Shared Reproducibility Core"
 version: "1.0.0"
-doi: 10.5281/zenodo.19322346
+doi: 10.5281/zenodo.19389890
 message: "If you use this repository, please cite it using the metadata from this file and the Zenodo DOI for the specific release."
 type: software
 authors:
