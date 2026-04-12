@@ -4,7 +4,7 @@ Rows marked **VERIFIED** have direct execution evidence from the QA session note
 
 | ID | Claim | Evidence | Status |
 |----|--------|----------|--------|
-| T1 | `outputs/tables/smoke_test_results.csv` matches pin in `config/expected_outputs.json` | `python scripts/validate_outputs.py` → `VALIDATION PASSED` after `python reproduce_all.py` on HEAD `c33cd14bb573e6be6611fc3a63485edf1b4c10b1` (2026-04-12) | **VERIFIED** |
+| T1 | `outputs/tables/smoke_test_results.csv` matches pin in `config/expected_outputs.json` | `python scripts/validate_outputs.py` → `VALIDATION PASSED` after `python reproduce_all.py` on HEAD `138f747f05326414aa2f385317b84f5533cfba0f` (2026-04-12) | **VERIFIED** |
 | T2 | `outputs/figures/smoke_test_summary.txt` matches pin | same as T1 | **VERIFIED** |
 | T3 | `outputs/tables/utilities_validation.csv` matches pin | same as T1 | **VERIFIED** |
 | T4 | `outputs/figures/demo_pipeline_summary.txt` matches pin | same as T1 | **VERIFIED** |
@@ -16,7 +16,7 @@ Rows marked **VERIFIED** have direct execution evidence from the QA session note
 | R1 | Full `reproduce_all.py` pipeline completes including shared-logic parity | `python reproduce_all.py` exit code 0; final line `ALL STEPS PASSED`; `PARITY VERIFICATION PASSED` from `scripts/verify_shared_logic_parity.py` (2026-04-12) | **VERIFIED** |
 | R2 | `config/shared_logic_manifest.json` matches `git show HEAD:<path>` for all entries | Same session as R1; parity step passed (2026-04-12) | **VERIFIED** |
 | N2 | Every `*.ipynb` under `notebooks/` is valid JSON and executes | 17 unique paths under `notebooks/` (deduped by `Path.resolve()`); in-memory execute with outputs cleared, `python3` kernel, all `OK` including `notebooks/example_notebook.ipynb` (2026-04-12) | **VERIFIED** |
-| G1 | Portfolio `eaa_system/system_snapshot.json` binds `repos.shared-core.commit` to this repo HEAD | Portfolio snapshot reconciled 2026-04-12: `repos.shared-core.commit` = `c33cd14bb573e6be6611fc3a63485edf1b4c10b1`; matches `git rev-parse HEAD` on the built tree | **VERIFIED** |
+| G1 | Portfolio `eaa_system/system_snapshot.json` binds `repos.shared-core.commit` to this repo HEAD | Portfolio snapshot reconciled 2026-04-12: `repos.shared-core.commit` = `138f747f05326414aa2f385317b84f5533cfba0f`; matches `git rev-parse HEAD` on the built tree | **VERIFIED** |
 | U1 | Unit tests pass | `python -m pytest -q` → `3 passed` (2026-04-12) | **VERIFIED** |
 
 **Summary:** **14 / 14** rows **VERIFIED**; **0 NOT VERIFIED**; **0 FAILED**.
