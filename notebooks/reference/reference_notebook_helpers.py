@@ -6,30 +6,14 @@ Not part of config/notebook_plan.json. Does not write canonical outputs.
 from __future__ import annotations
 
 import json
-import os
 import sys
 from pathlib import Path
 
+_ROOT = Path(__file__).resolve().parent.parent.parent
+if str(_ROOT) not in sys.path:
+    sys.path.insert(0, str(_ROOT))
 
-def repo_root() -> Path:
-    env_root = os.environ.get("EAA_REPO_ROOT")
-    if env_root:
-        p = Path(env_root).expanduser().resolve()
-        if (p / "engine" / "corrected_public_engine_v1_1.py").is_file():
-            return p
-
-    start = Path.cwd().resolve()
-    anchors = [
-        Path("engine") / "corrected_public_engine_v1_1.py",
-        Path("config") / "notebook_plan.json",
-        Path("reproduce_all.py"),
-    ]
-    for p in (start, *start.parents):
-        if all((p / a).exists() for a in anchors):
-            return p
-    raise RuntimeError(
-        f"Repository root not found from cwd={start}. Expected anchors: {anchors}"
-    )
+from eaa.paths import repo_root  # noqa: E402
 
 
 def run_core_reference_demo() -> None:

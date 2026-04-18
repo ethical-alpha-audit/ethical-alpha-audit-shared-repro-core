@@ -9,6 +9,8 @@ Stable surfaces intended for reuse across paper repositories and CI. Anything no
 | `eaa.paths.repo_root()` | Resolve repository root via `EAA_REPO_ROOT` or anchor files (`engine/`, `config/`, `reproduce_all.py`). |
 | `eaa.notebooks.archival` | Canonical implementations for archival/interactive notebook behaviour (widgets, contract runs). Story notebooks under `notebooks/archival_shared/` should call into this module rather than duplicating logic. |
 | `notebooks/archival_shared/archival_notebook_helpers.py` | Thin re-export of `eaa.notebooks.archival` for path-stable imports from notebook working directories. |
+| `notebooks/reference/reference_notebook_helpers.py` | Display-only demos for reference notebooks; uses `eaa.paths.repo_root` (no duplicate root discovery). |
+| `notebooks/website_interactive/ui_gate_explorer.py` | Binder-facing widget explorer; uses `eaa.paths.repo_root` and the authoritative engine. |
 
 ## Authoritative engine
 
